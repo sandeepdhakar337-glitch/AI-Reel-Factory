@@ -45,7 +45,7 @@ REQUIRED = (
 # DIGEST_HOUR_UTC were carried for months after their last reader was removed — a default that
 # nothing consults is a setting an operator can tune with no effect, which is worse than absent.
 DEFAULTS = {
-    "NICHE": "impact-news",
+    "NICHE": "funny-cat-facts",  # <<< यहाँ बदला है भाई (पहले impact-news था)
     # NICHE_LEAN ("soft-positive") removed 2026-07-27: it was read by nothing, and the operator's
     # policy is now truth-first rather than tone-first. What replaces it is a real gate —
     # factcheck.verify() re-checks every finished script (rule 6).
