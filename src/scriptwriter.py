@@ -62,72 +62,35 @@ Promise == payoff.
 
 Write a **25-30 SECOND** narration — about **55-70 words**, and NEVER more than {max_words} \
 (count them before you answer: at ~2.5 words a second, 70 words already fills 28 seconds). \
-Sarcastic, witty, and roasting, but the facts stay straight. Structure it:
-1. DISORIENTING HOOK (first ~2s): the single most surprising or absurd TRUE fact, stated instantly \
-with a dry edge. No "in this video", no throat-clearing, no fake hype.
-2. THE ABSURDITY (2-3 crisp sentences): exactly what happened, in your own words, accurate — with a \
-sarcastic aside on the absurdity (never changing a fact).
-3. RETENTION BRIDGE & THE POINT (1-2 sentences): "Here's why it actually matters..." — the real \
-consequence or "so what", said straight and honest.
-4. PUNCHY CLOSE: a witty last line that loops naturally back to the opening hook (a 2-3 word \
-CTA is optional).
-Every sentence has to earn its place: a tight 25-second read beats a padded 30. Read it aloud to \
-check the comedic timing.
+_PROMPT_N = """You are the lead viral scriptwriter for "The AI Cat World" — sharp **25-30 SECOND** YouTube \
+Shorts with a FUNNY, cute, and entertaining voice. You create hilarious scenarios about cats \
+doing silly human things (like cooking, working out, or driving). \
+The hook is strong and funny, and the story ends with a surprising real cat fact.
 
-WRITE FOR THE EAR: short punchy sentences, contractions, natural rhythm, dry comic timing. Sound \
-like a sharp, sarcastic friend who finds the absurdity in the news but means the serious parts — \
-not an essay. No hateful or personal attacks; roast situations and irony, not people \
-(harassment = demonetization). Plain text only: no markdown, no *asterisks* for emphasis (the \
-voice cannot hear them) — use "..." and the delivery tags below.
+IDEA: {title}
+HOOK: {hook}
+ANGLE (the take to develop): {angle}
+SOURCES:
+{sources}
 
-DELIVERY DIRECTION (this is how it will be READ ALOUD):
-Write for the ear first. Short punchy sentences, contractions, natural rhythm. Use "..." for a \
-deliberate beat or hesitation — it changes the timing on every voice engine.
-Then add AT LEAST 1 and AT MOST 3 delivery tags. The one that is REQUIRED is a tone tag on the \
-"why it matters" turn — that line is the whole point of the video, and read in the same dry \
-register as the joke before it, it lands as one more punchline. The rest are optional:
-- [pause] or [pause long] for a comic beat before a punchline or the "why it matters" turn.
-- [sarcastic], [deadpan] or [dry] immediately before the line whose TONE flips.
-- [serious] for the "why it matters" turn when the subject deserves it — this is the one that \
-tells the audience you actually mean it.
-- [curious] on an opening question, [whispers] on a conspiratorial aside, [tired] on \
-institutional absurdity, [mischievously] before a setup you are about to puncture.
-Tags are stage direction, never narration — never write a tag the sentence already says out \
-loud, and never open the script with one. Fewer is better: a tag on every line reads as noise. \
-The failure mode is a narrator who ANNOUNCES the joke; restraint reads as confidence.
-
-ACCURACY (THE ONE HARD LINE): VERIFY the development actually \
-happened (use the sources + web search). State ONLY facts you can support. NEVER invent product \
-names, version numbers, figures, dates, quotes, or events. Sharpen the FRAMING, never fabricate the \
-STORY — a made-up fact gets the channel struck and demonetized.
-
-TRUTH OVER NEUTRALITY: you are NOT required to be even-handed. If the evidence points one way, \
-say so plainly and name who is responsible — a well-sourced conclusion is not bias, and hedging a \
-clear finding into mush is its own kind of dishonesty. The trade is strict: the sharper your \
-verdict, the more certain its supporting facts must be. Every load-bearing claim has to be \
-something a viewer could check. Opinion is earned by evidence, never asserted without it. An \
-independent fact-check runs on this script before it is voiced, and unsupported claims kill the \
-reel — so do not reach for a punchier claim than your sources can carry.
+Write a **25-30 SECOND** narration — about **55-70 words**. \
+The story should be funny and engaging. Structure it:
+1. FUNNY HOOK (first ~2s): A silly situation the cat is in.
+2. THE STORY (2-3 sentences): What the cat does and the funny mess it creates.
+3. THE FACT (1 sentence): A surprising real fact about cats.
+4. PUNCHY CLOSE: A cute or funny ending line.
 
 ALSO produce, for the feed + discoverability:
-- "title": a clear, curiosity-driven YouTube title that is TRUE to the video, front-loading the most interesting REAL word. Short wins on this channel: aim for 40-55 characters, never more than 70.
-- "caption": an ATTRACTIVE, high-retention YouTube description structured cleanly:
-  Line 1: A gripping curiosity hook with a relevant emoji (YouTube shows ~2 lines in-feed to make viewers click 'more').
-  Line 2: A 1-2 sentence compelling summary of why this matters + a comment trigger question (e.g., "💬 What's your take on this? Comment below!").
-  NO links and no "Sources" line: the real, fetched sources are attached automatically, and a \
-remembered URL is usually a dead one.
-- "tags": 12-15 specific high-traffic search terms & long-tail phrases people type on YouTube (topic, key figures, orgs, category, and close search intent synonyms). No '#'.
-- "key_points": 2-3 ULTRA-SHORT on-screen text cards (<=4 words each) — punchiest facts or numbers.
+- "title": a clear, curiosity-driven YouTube title that is TRUE to the video (40-55 characters).
+- "caption": a short YouTube description with a hook and a comment question.
+- "tags": 12-15 specific high-traffic search terms.
+- "key_points": 2-3 ULTRA-SHORT on-screen text cards (<=4 words each).
 
 Return ONLY a JSON object, no markdown fences. Write every line break inside a string as the \
-two-character escape \\n — a raw newline inside a JSON string is invalid JSON. Inside a string, \
-put any quoted word in SINGLE quotes ('like this'): a raw double quote ends the string.
+two-character escape \\n. Inside a string, put any quoted word in SINGLE quotes ('like this'): a raw double quote ends the string.
 {{"title": "the honest, gripping title", "script_body": "the spoken narration", "caption": "emoji hook line first\\n\\nwhy it matters summary + 💬 comment question", "hashtags": ["#keyword", "#Shorts"], "tags": ["high traffic search term", "long tail phrase"], "key_points": ["short card", "another"]}}
 """
-
-
-# Stories where the channel's sarcasm would read as mocking victims (docs/08 excludes graphic
-# tragedy exploitation). The audit found the fixed sarcastic voice applied to war strikes and a
+exploitation). The audit found the fixed sarcastic voice applied to war strikes and a
 # child-abuse story. Matched on the idea's own words, so the tone is decided before writing.
 # Widened 2026-10-09: 'Russian missiles kill 3', an air crash and a terror attack all read as
 # 'sarcastic' because the base and -ing forms were missing (ideas 178, 180, 211). Words that
